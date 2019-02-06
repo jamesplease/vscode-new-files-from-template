@@ -1,6 +1,6 @@
-# create-file README
+# VSCode: New File(s) From Template
 
-This is the README for your extension "create-file". After writing up a brief description, we recommend including the following sections.
+Create new VSCode files from a template definition.
 
 ## Features
 
