@@ -1,1 +1,0 @@
-import Reacts from 'reacts'
