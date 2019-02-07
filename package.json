@@ -1,8 +1,10 @@
 {
 	"name": "new-files-from-template",
 	"displayName": "new-files-from-template",
+	"publisher": "jamesplease",
+	"repository": "https://github.com/jamesplease/vscode-new-files-from-template",
 	"description": "Create new file(s) from the Explorer menu based on a template definition.",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.31.0"
 	},
@@ -30,21 +32,14 @@
 			]
 		},
 		"configuration": {
-      "title": "New File(s) From Template",
-      "type": "object",
-      "properties": {
-        "newFilesFromTemplates.templates": {
-          "type": "object",
-          "default": {
-						"React": [
-							{
-								"extension": ".js",
-								"template": "import React from 'react';"
-							}
-						]
-					},
-          "description": "Your templates"
-        }
+			"title": "New File(s) From Template",
+			"type": "object",
+			"properties": {
+				"newFilesFromTemplates.templates": {
+					"type": "object",
+					"default": {},
+					"description": "Your templates"
+				}
 			}
 		}
 	},

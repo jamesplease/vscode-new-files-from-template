@@ -16,9 +16,7 @@ function activate(context) {
 		const directoryPath = info.fsPath;
 
 		const config = vscode.workspace.getConfiguration('newFilesFromTemplates');
-		// console.log('got it', Object.keys(config));
 		const templates = config.get('templates');
-		// console.log('The templates', templates);
 
 		const templateNames = Object.keys(templates);
 
@@ -51,9 +49,18 @@ function activate(context) {
 					};
 				});
 
-				filesToCreate.map((fileDescription) => {
+				// Loop through each file to create, and...create it!
+				filesToCreate.map((fileDescription, index) => {
 					fs.appendFile(fileDescription.filename, fileDescription.contents, () => {
-						// If I don't add this callback, then VSCode throws an error.
+						const isFirst = index === 0;
+
+						vscode.workspace.openTextDocument(fileDescription.filename)
+							.then(v => {
+									vscode.window.showTextDocument(v, { preview: false, preserveFocus: !isFirst });
+							},
+							() => {
+								vscode.window.showInformationMessage(`There was an unexpected error when opening this file.`);
+							});
 					});
 				});
 			});
