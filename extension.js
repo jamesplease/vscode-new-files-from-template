@@ -51,9 +51,23 @@ function activate(context) {
 					};
 				});
 
-				filesToCreate.map((fileDescription) => {
+				// Loop through each file to create, and...create it!
+				filesToCreate.map((fileDescription, index) => {
 					fs.appendFile(fileDescription.filename, fileDescription.contents, () => {
-						// If I don't add this callback, then VSCode throws an error.
+						if (index !== 0) {
+							return;
+						}
+
+						// If we make it here, then we are at the first file. We want to open that file.
+						// First, we load it up.
+						vscode.workspace.openTextDocument(fileDescription.filename)
+							.then(v => {
+								// Then we show it.
+								vscode.window.showTextDocument(v);
+							},
+							() => {
+								vscode.window.showInformationMessage(`There was an unexpected error when opening this file.`);
+							});
 					});
 				});
 			});
