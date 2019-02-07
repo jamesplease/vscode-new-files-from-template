@@ -54,16 +54,26 @@ function activate(context) {
 				// Loop through each file to create, and...create it!
 				filesToCreate.map((fileDescription, index) => {
 					fs.appendFile(fileDescription.filename, fileDescription.contents, () => {
-						if (index !== 0) {
-							return;
-						}
+						const isFirst = index === 0;
 
-						// If we make it here, then we are at the first file. We want to open that file.
-						// First, we load it up.
 						vscode.workspace.openTextDocument(fileDescription.filename)
 							.then(v => {
-								// Then we show it.
-								vscode.window.showTextDocument(v);
+									vscode.window.showTextDocument(v, { preview: false, preserveFocus: !isFirst })
+									.then((editor) => {
+										// console.log('done', editor);
+										if (isFirst) {
+											editor.insertSnippet('export default class $1 extends Component', new vscode.Position(0, 0))
+												.then(
+													res => console.log('done', res),
+													err => console.log('err', err)
+												);
+										}
+										// editor.insert(new vscode.SnippetString('export default class $1 extends Component'))
+										// 	.then(
+										// 		v => console.log('SUCCESS', v),
+										// 		err => console.log('ERR', err)
+										// 	);
+									});
 							},
 							() => {
 								vscode.window.showInformationMessage(`There was an unexpected error when opening this file.`);
