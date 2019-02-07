@@ -37,14 +37,7 @@
 			"properties": {
 				"newFilesFromTemplates.templates": {
 					"type": "object",
-					"default": {
-						"React": [
-							{
-								"extension": ".js",
-								"template": "import React from 'react';"
-							}
-						]
-					},
+					"default": {},
 					"description": "Your templates"
 				}
 			}

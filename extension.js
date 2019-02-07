@@ -16,9 +16,7 @@ function activate(context) {
 		const directoryPath = info.fsPath;
 
 		const config = vscode.workspace.getConfiguration('newFilesFromTemplates');
-		// console.log('got it', Object.keys(config));
 		const templates = config.get('templates');
-		// console.log('The templates', templates);
 
 		const templateNames = Object.keys(templates);
 
@@ -58,22 +56,7 @@ function activate(context) {
 
 						vscode.workspace.openTextDocument(fileDescription.filename)
 							.then(v => {
-									vscode.window.showTextDocument(v, { preview: false, preserveFocus: !isFirst })
-									.then((editor) => {
-										// console.log('done', editor);
-										if (isFirst) {
-											editor.insertSnippet('export default class $1 extends Component', new vscode.Position(0, 0))
-												.then(
-													res => console.log('done', res),
-													err => console.log('err', err)
-												);
-										}
-										// editor.insert(new vscode.SnippetString('export default class $1 extends Component'))
-										// 	.then(
-										// 		v => console.log('SUCCESS', v),
-										// 		err => console.log('ERR', err)
-										// 	);
-									});
+									vscode.window.showTextDocument(v, { preview: false, preserveFocus: !isFirst });
 							},
 							() => {
 								vscode.window.showInformationMessage(`There was an unexpected error when opening this file.`);
