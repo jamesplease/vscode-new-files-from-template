@@ -32,12 +32,12 @@
 			]
 		},
 		"configuration": {
-      "title": "New File(s) From Template",
-      "type": "object",
-      "properties": {
-        "newFilesFromTemplates.templates": {
-          "type": "object",
-          "default": {
+			"title": "New File(s) From Template",
+			"type": "object",
+			"properties": {
+				"newFilesFromTemplates.templates": {
+					"type": "object",
+					"default": {
 						"React": [
 							{
 								"extension": ".js",
@@ -45,8 +45,8 @@
 							}
 						]
 					},
-          "description": "Your templates"
-        }
+					"description": "Your templates"
+				}
 			}
 		}
 	},
