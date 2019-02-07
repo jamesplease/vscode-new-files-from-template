@@ -1,6 +1,8 @@
 {
 	"name": "new-files-from-template",
 	"displayName": "new-files-from-template",
+	"publisher": "jamesplease",
+	"repository": "https://github.com/jamesplease/vscode-new-files-from-template",
 	"description": "Create new file(s) from the Explorer menu based on a template definition.",
 	"version": "0.0.1",
 	"engines": {
